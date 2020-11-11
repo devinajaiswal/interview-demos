@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import AppBar from '@material-ui/core/AppBar';
@@ -39,8 +39,8 @@ const styles = theme => ({
 
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing(8),
+        marginRight: theme.spacing(5),
         width: '75%'
 
     },
@@ -70,7 +70,7 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'space-around',
         height: '50px',
-        width: '75%'
+        width: '75%',
     }
 });
 
@@ -140,7 +140,7 @@ capitalizeFirstLetter = (string)=> {
 
   // On change handler
     handleChange = name => event => {
-        console.log(name)
+       
         if(name === 'checkedB' ) {
             this.setState({ [name]: event.target.checked });
         }
@@ -262,12 +262,26 @@ capitalizeFirstLetter = (string)=> {
         
         }
     
+        handleRefresh= () => {
+    
+        
+            this.setState({
+                label: '',
+                checkedB: false,
+                default: '',
+                choices: [],
+                order: "",
+            })
+    
+            document.getElementById("myForm").reset();
+            
+            }
  
     // OnSubmit Handler
 
     handleSubmit = () => {
         
-        console.log(this.state)
+        
         const isValid=this.validate();
         
         if(isValid){
@@ -329,6 +343,9 @@ capitalizeFirstLetter = (string)=> {
         window.alert('Type is mandatory! Please check the type.')
         return false
      }
+    if(this.state.default===""){
+        return false
+     }
      
 return true;
 
@@ -338,7 +355,8 @@ return true;
     render() {
         const { classes } = this.props;
         const {choicesArray} = this.state
-        const enableButton= this.validate;
+        
+        
         return (
             <div>
                 <form id="myForm" type='submit' onSubmit={this.handleSubmit}>
@@ -354,7 +372,7 @@ return true;
                                 <TextField
                                   error={this.state.label===""}
                                     style={{ margin: '0px' }}
-                                    required="true"
+                                    required={true}
                                     className={classes.textField}
                                     onChange={this.handleChange('label')}
                                     margin="normal"
@@ -455,7 +473,7 @@ return true;
                                     <Button variant="contained" 
                                     color="primary" 
                                     className={classes.button}
-                                    disabled={!this.state.errors.label.valid || !enableButton || !this.state.errors.default.valid }
+                                    disabled={!this.state.errors.label.valid || !this.state.errors.default.valid}
                                         onClick={this.handleSubmit}
                                     >
                                         Save Changes
@@ -465,6 +483,12 @@ return true;
                                         onClick={this.handleCancel}>
                                         Cancel
                                 </Button>
+                                <Button 
+                                color="secondary" className={classes.button}
+                                onClick={this.handleRefresh}>
+                                Start Fresh
+                                </Button>
+
                                 </div>
                             </div>
                         </Card>
