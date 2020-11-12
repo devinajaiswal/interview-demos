@@ -109,13 +109,13 @@ class FieldBuilderForm extends Component {
         }
   
     }
-    this.handleCancel =this.handleCancel.bind(this);
-    this.handleChange=this.handleChange.bind(this);
-    this.handleChangeMultiple=this.handleChangeMultiple.bind(this);
-    this.handleRefresh=this.handleRefresh.bind(this);
-    this.handleSubmit=this.handleSubmit.bind(this);
-    console.log(this);
-    this.validate=this.validate.bind(this);
+    // this.handleCancel =this.handleCancel.bind(this);
+    // this.handleChange=this.handleChange.bind(this);
+    // this.handleChangeMultiple=this.handleChangeMultiple.bind(this);
+    // this.handleRefresh=this.handleRefresh.bind(this);
+    // this.handleSubmit=this.handleSubmit.bind(this);
+    // console.log(this);
+    // this.validate=this.validate.bind(this);
 //    this.setStart();
 };
 
