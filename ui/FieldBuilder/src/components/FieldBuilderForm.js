@@ -79,6 +79,7 @@ const styles = theme => ({
 class FieldBuilderForm extends Component {
    constructor(props){
        super(props);
+       console.log(props);
        this.state ={
         label: "Sales Region",
         checkedB: true,
@@ -106,8 +107,15 @@ class FieldBuilderForm extends Component {
                 message: ""
             }
         }
-
+  
     }
+    this.handleCancel =this.handleCancel.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+    this.handleChangeMultiple=this.handleChangeMultiple.bind(this);
+    this.handleRefresh=this.handleRefresh.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
+    console.log(this);
+    this.validate=this.validate.bind(this);
 //    this.setStart();
 };
 
