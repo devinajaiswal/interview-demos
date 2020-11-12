@@ -81,12 +81,12 @@ class FieldBuilderForm extends Component {
        super(props);
        console.log(props);
        this.state ={
-        label: "Sales Region",
+        label: localStorage.getItem('label') || "Sales Region",
         checkedB: true,
-        default: '',
-        choices: [],
-        order: [],
-        choicesArray : [
+        default:  " ",
+        choices:  [],
+        order:  [],
+        choicesArray :[
             'Asia',
             'Australia',
             'Western Europe',
@@ -121,23 +121,18 @@ class FieldBuilderForm extends Component {
 
 
 componentDidMount(){
-window.addEventListener('beforeunload', function (e) { 
-    e.preventDefault(); 
-    e.returnValue = ''; 
-})
+window.addEventListener('beforeunload', this.handleUnload)
 
 
 
+
+// function (e) { 
+//     e.preventDefault(); 
+//     e.returnValue = ''; 
+// })
 }
 handleUnload =(e)=> {
    localStorage.setItem('label',this.state.label);
-   localStorage.setItem('checkedB',this.state.checkedB);
-   localStorage.setItem('default',this.state.default);
-   localStorage.setItem('choices',this.state.choices);
-   localStorage.setItem('order',this.state.order);
-   localStorage.setItem('choicesArray',this.state.choicesArray);
-
- 
 
 } 
 // Function to capitalize Default Field
