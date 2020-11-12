@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { CircularProgress} from '@material-ui/core';
+import PropTypes from "prop-types";
 function Button(props){
    const[size] = useState(props.size);
    const[color] = useState(props.color);
@@ -32,5 +33,12 @@ function Button(props){
 
 
 }
+
+Button.propTypes={
+  size: PropTypes.string,
+  color: PropTypes.string,
+  content:PropTypes.string.isRequired,
+  loading:PropTypes.bool
+};
 
 export default Button;
